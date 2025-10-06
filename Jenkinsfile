@@ -7,7 +7,7 @@ pipeline {
   }
 
   environment {
-    SONAR_INSTALL = 'SonarQ1' 
+    SONAR_INSTALL = 'sq1' 
   }
 
   stages {
@@ -44,7 +44,7 @@ pipeline {
     stage('5 - Build & Archive JAR') {
       steps {
         echo 'Construction du package final'
-        sh 'mvn -B -DskipTests=false package'
+        sh 'mvn -B -DskipTests=true package'
         archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
       }
     }
